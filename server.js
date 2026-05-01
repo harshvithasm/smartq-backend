@@ -5,7 +5,7 @@ const { Server } = require('socket.io');
 const mongoose = require('mongoose');
 const cors     = require('cors');
 require('dotenv').config();
-
+const domainRoutes = require('./routes/domainRoutes');
 const app    = express();
 const server = http.createServer(app);
 
@@ -20,6 +20,7 @@ const io = new Server(server, {
   }
 });
 app.set('io', io);
+app.use('/api/domains', domainRoutes);
 app.use(cors({
   origin: "*"
 }));
