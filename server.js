@@ -11,13 +11,24 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-  },
+    origin: [
+      "https://smartq-frontend-iota.vercel.app",
+      "http://localhost:3000"
+    ],
+    methods: ["GET", "POST", "PATCH", "DELETE"],
+    credentials: true
+  }
 });
 app.set('io', io);
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000' }));
+
+app.use(cors({
+  origin: [
+    "https://smartq-frontend-iota.vercel.app",
+    "http://localhost:3000"
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // ── MongoDB ───────────────────────────────────────────────────────
