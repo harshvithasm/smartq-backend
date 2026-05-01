@@ -20,12 +20,12 @@ const io = new Server(server, {
   }
 });
 app.set('io', io);
-app.use('/api/domains', domainRoutes);
+
 app.use(cors({
   origin: "*"
 }));
 app.use(express.json());
-
+app.use('/api/domains', domainRoutes);
 // ── MongoDB ───────────────────────────────────────────────────────
 mongoose
   .connect(process.env.MONGO_URI || 'mongodb://localhost:27017/smartq')
