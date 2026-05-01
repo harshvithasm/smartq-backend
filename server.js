@@ -20,14 +20,8 @@ const io = new Server(server, {
   }
 });
 app.set('io', io);
-
-
 app.use(cors({
-  origin: [
-    "https://smartq-frontend-iota.vercel.app",
-    "http://localhost:3000"
-  ],
-  credentials: true
+  origin: "*"
 }));
 app.use(express.json());
 
